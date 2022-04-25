@@ -1,7 +1,7 @@
 .aside-container {
     position: absolute;
     top: 20%;
-    left: 1%;
+    left: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,10 +11,24 @@
 .add-game-btn {
     width: 250px;
     font-size: 30px;
+    margin-bottom: 10px;
 }
 
 .play-tetris-btn {
     width: 250px;
     font-size: 30px;
+    margin-bottom: 10px;
+
+}
+.search-game-btn {
+    width: 250px;
+    font-size: 30px;
+    margin-bottom: 10px;
+
+}
+.credits-btn {
+    width: 250px;
+    font-size: 30px;
+   
 
 }

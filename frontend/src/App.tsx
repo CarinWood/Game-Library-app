@@ -3,6 +3,7 @@ import './App.css';
 import tetris from './assets/images/greenTetris.png'
 import Aside from './components/aside/Aside';
 import {Nes} from './components/Nes'
+import Placeholder from './components/placeholder/Placeholder';
 import Search from './components/search/Search';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
         <Search/>
         <Aside/>
+        <Placeholder/>
 
       
 
