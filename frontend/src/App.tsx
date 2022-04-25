@@ -1,12 +1,38 @@
-import React from 'react';
+import React, {useState, FC} from 'react';
 import './App.css';
-import tetris from './assets/images/greenTetris.png'
 import Aside from './components/aside/Aside';
-import {Nes} from './components/Nes'
+import Credits from './components/credits/Credits';
 import Placeholder from './components/placeholder/Placeholder';
 import Search from './components/search/Search';
 
-function App() {
+interface Props {
+  
+}
+
+const App:FC =() => {
+  const [showSearch, setShowSearch] = useState(false)
+  const [showCredits, setShowCredits] = useState(false)
+  const [showMario, setShowMario] = useState(false)
+
+  const openSearch = () => {
+    setShowSearch(true)
+    setShowCredits(false)
+    setShowMario(false)
+   
+  }
+
+  const openCredits = () => {
+      setShowCredits(true)
+      setShowSearch(false)
+      setShowMario(false)
+  }
+
+  const pressOk = () => {
+    setShowCredits(false)
+    setShowMario(true)
+  }
+
+
   return (
     <div className="App">
         <header className='header-div'>
@@ -15,11 +41,13 @@ function App() {
        
         </header>
 
-     
+        {showMario === true ? <Placeholder/> : ''}
 
-        <Search/>
-        <Aside/>
-        <Placeholder/>
+        {showSearch === true ? <Search/>: ''}
+        <Aside openSearch={openSearch} openCredits={openCredits} />
+
+        {showCredits === true ? <Credits pressOk={pressOk}/>: ''}
+    
 
       
 

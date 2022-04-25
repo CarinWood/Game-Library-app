@@ -1,16 +1,47 @@
 import {FC, useState} from 'react'
 import './search.css'
 import { RiArrowDropRightFill, RiArrowDropDownFill } from "react-icons/ri"
+import { BsCheck } from "react-icons/bs";
 
 const Search:FC = () => {
 
 const [openMenu, setOpenMenu] = useState(false)
+const [nesIsChecked, setNesIsChecked] = useState(false)
+const [snesIsChecked, setSnesIsChecked] = useState(false)
+const [segaIsChecked, setSegaIsChecked] = useState(false)
+const [gbIsChecked, setGbIsChecked] = useState(false)
 
 
 const openAdvancedMenu = (): void => {
     setOpenMenu(!openMenu)
 }
 
+const clickNes = () => {
+  setNesIsChecked(!nesIsChecked)
+  setSnesIsChecked(false)
+  setSegaIsChecked(false)
+  setGbIsChecked(false)
+}
+const clickSnes = () => {
+  setSnesIsChecked(!snesIsChecked)
+  setNesIsChecked(false)
+  setSegaIsChecked(false)
+  setGbIsChecked(false)
+}
+
+const clickSega =() => {
+  setSegaIsChecked(!segaIsChecked)
+  setNesIsChecked(false)
+  setSnesIsChecked(false)
+  setGbIsChecked(false)
+}
+
+const clickGB =() => {
+  setGbIsChecked(!gbIsChecked)
+  setSegaIsChecked(false)
+  setNesIsChecked(false)
+  setSnesIsChecked(false)
+}
 
   return (
     <div className='search-container'>
@@ -37,18 +68,27 @@ const openAdvancedMenu = (): void => {
 
         <div>
           {openMenu=== false &&
-          <div>
-          <p>System:</p>
-        <select className='system-options'>
-            <option value="" disabled selected hidden>System...</option>
-            <option value="0">Nes</option>
-            <option value="1">Snes</option>
-            <option value="2">Game Boy</option>
-            <option value="3">Game Boy Color</option>
-            <option value="4">Game Boy Advance</option>
-            <option value="5">Playstation</option>
-        </select>
-        </div>
+          <div className="system-choices">
+            <p className='system'>System:</p>
+            <form  onClick={()=>clickNes()}  className='checkbox-form'>
+                <div className='square'>{nesIsChecked && <BsCheck className='checkmark'/>}</div>
+                <p className='label'>NES</p>
+            </form>
+            <form onClick={() =>clickSnes()}className='checkbox-form'>
+                <div className='square'>{snesIsChecked && <BsCheck className='snesmark'/>}</div>
+                <p className='label'>SNES</p>
+            </form>
+            <form onClick={() => clickSega()} className='checkbox-form'>
+                <div className='square'>{segaIsChecked && <BsCheck className='segamark'/>}</div>
+                <p className='label'>SEGA</p>
+            </form>
+            <form onClick={() =>clickGB()} className='checkbox-form'>
+                <div className='square'>{gbIsChecked && <BsCheck className="gbmark"/>}</div>
+                <p className='label'>GAMEBOY</p>
+            </form>
+         
+
+          </div>
         }
 </div>
       
