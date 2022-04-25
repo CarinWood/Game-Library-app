@@ -1,0 +1,20 @@
+.aside-container {
+    position: absolute;
+    top: 20%;
+    left: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-game-btn {
+    width: 250px;
+    font-size: 30px;
+}
+
+.play-tetris-btn {
+    width: 250px;
+    font-size: 30px;
+
+}
