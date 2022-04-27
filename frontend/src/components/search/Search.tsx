@@ -2,6 +2,9 @@ import {FC, useState} from 'react'
 import './search.css'
 import { RiArrowDropRightFill, RiArrowDropDownFill } from "react-icons/ri"
 import { BsCheck } from "react-icons/bs";
+import Gameview from '../gameview/Gameview';
+import GameService from '../../utils/service/GameService';
+import { ReadGame } from '../../utils/interface/Games';
 
 const Search:FC = () => {
 
@@ -10,7 +13,9 @@ const [nesIsChecked, setNesIsChecked] = useState(false)
 const [snesIsChecked, setSnesIsChecked] = useState(false)
 const [segaIsChecked, setSegaIsChecked] = useState(false)
 const [gbIsChecked, setGbIsChecked] = useState(false)
+const [showGameview, setShowGameview] = useState(false)
 const [genre, setGenre] = useState('')
+const [data, setData] = useState<Array<ReadGame>>([])
 
 
 const openAdvancedMenu = (): void => {
@@ -62,6 +67,18 @@ const clickGenre = (genre: string) => {
 
 }
 
+
+const searchGames = () => {
+  setShowGameview(true)
+
+  GameService.getAll()
+  .then(response => {
+    console.log(response.data)
+    setData(response.data)
+  })
+  .catch(error => {console.log(error)})
+}
+
   return (
     <div className='search-container'>
         <div className='search-div'>
@@ -72,7 +89,7 @@ const clickGenre = (genre: string) => {
          className="search-input"
          placeholder='Game title ...'
          />
-         <button className="search-btn">Search</button>
+         <button onClick={()=> searchGames()} className="search-btn">Search</button>
         </div>
 
       
@@ -140,7 +157,7 @@ const clickGenre = (genre: string) => {
           </section>
         }
 </div>
-      
+      {showGameview && <Gameview data={data}/>}
 
     </div>
   )
