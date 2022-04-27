@@ -15,7 +15,7 @@ const [segaIsChecked, setSegaIsChecked] = useState(false)
 const [gbIsChecked, setGbIsChecked] = useState(false)
 const [showGameview, setShowGameview] = useState(false)
 const [genre, setGenre] = useState('')
-const [data, setData] = useState<Array<ReadGame>>([])
+const [games, setGames] = useState<Array<ReadGame>>([])
 
 
 const openAdvancedMenu = (): void => {
@@ -73,8 +73,7 @@ const searchGames = () => {
 
   GameService.getAll()
   .then(response => {
-    console.log(response.data)
-    setData(response.data)
+    setGames(response.data)
   })
   .catch(error => {console.log(error)})
 }
@@ -157,7 +156,7 @@ const searchGames = () => {
           </section>
         }
 </div>
-      {showGameview && <Gameview data={data}/>}
+      {showGameview && <Gameview games={games}/>}
 
     </div>
   )

@@ -4,7 +4,8 @@
     margin-left: 20px;
     width: 600px;
     height: 92vh;
-    background: linear-gradient(#E9F8FF, #C1E3FF); 
+    background-color: white;
+    /* background: linear-gradient(#E9F8FF, #C1E3FF);  */
     box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.7);
 }
 
@@ -12,11 +13,10 @@
     margin-top: 20px;
     font-size: 25px;
     letter-spacing: 0.8px;
+    margin-bottom: 30px;
 }
 
-#star-icon {
-    margin-right: 20px;
-}
+
 
 .game-card{
     
@@ -27,10 +27,3 @@
     padding-left: 30px;
 }
 
-.title {
-    margin-top: 0px;
-}
-
-.system {
-    margin-top: 0px;
-}
