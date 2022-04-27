@@ -10,6 +10,7 @@ const [nesIsChecked, setNesIsChecked] = useState(false)
 const [snesIsChecked, setSnesIsChecked] = useState(false)
 const [segaIsChecked, setSegaIsChecked] = useState(false)
 const [gbIsChecked, setGbIsChecked] = useState(false)
+const [genre, setGenre] = useState('')
 
 
 const openAdvancedMenu = (): void => {
@@ -21,6 +22,7 @@ const clickNes = () => {
   setSnesIsChecked(false)
   setSegaIsChecked(false)
   setGbIsChecked(false)
+  
 }
 const clickSnes = () => {
   setSnesIsChecked(!snesIsChecked)
@@ -41,6 +43,23 @@ const clickGB =() => {
   setSegaIsChecked(false)
   setNesIsChecked(false)
   setSnesIsChecked(false)
+}
+
+const clickGenre = (genre: string) => {
+    if (genre === 'action') {
+      setGenre('action')
+    } else if (genre === 'platformer') {
+      alert('platformer')
+    } else if (genre === 'rpg') {
+      alert('rpg')
+    } else if (genre === 'puzzle') {
+      alert('puzzle')
+    } else if (genre === 'brawler') {
+      alert('brawler')
+    } else {
+      alert('shooter')
+    }
+
 }
 
   return (
@@ -68,6 +87,7 @@ const clickGB =() => {
 
         <div>
           {openMenu=== false &&
+          <section>
           <div className="system-choices">
             <p className='system'>System:</p>
             <form  onClick={()=>clickNes()}  className='checkbox-form'>
@@ -86,9 +106,38 @@ const clickGB =() => {
                 <div className='square'>{gbIsChecked && <BsCheck className="gbmark"/>}</div>
                 <p className='label'>GAMEBOY</p>
             </form>
+            </div>
+            
+          <div className="genre-choices">
+            <p className='genre'>Genre:</p>
+            <form  onClick={()=>clickGenre('action')}  className='genre-form'>
+                <div className='box'>{genre === 'action' && <BsCheck className='action-check'/>}</div>
+                <p className='label'>Action</p>
+            </form>
+            <form onClick={() =>clickGenre('platformer')}className='genre-form'>
+                <div className='box'>{snesIsChecked && <BsCheck className='snesmark'/>}</div>
+                <p className='label'>Platform</p>
+            </form>
+            <form onClick={() => clickGenre('rpg')} className='genre-form'>
+                <div className='box'>{segaIsChecked && <BsCheck className='segamark'/>}</div>
+                <p className='label'>RPG</p>
+            </form>
+            <form onClick={() =>clickGenre('puzzle')} className='genre-form'>
+                <div className='box'>{gbIsChecked && <BsCheck className="gbmark"/>}</div>
+                <p className='label'>Puzzle</p>
+            </form>
+            <form onClick={() =>clickGenre('brawler')} className='genre-form'>
+                <div className='box'>{gbIsChecked && <BsCheck className="gbmark"/>}</div>
+                <p className='label'>Brawler</p>
+            </form>
+            <form onClick={() =>clickGenre('shooter')} className='genre-form'>
+                <div className='box'>{gbIsChecked && <BsCheck className="gbmark"/>}</div>
+                <p className='label'>Shooter</p>
+            </form>
          
 
           </div>
+          </section>
         }
 </div>
       
