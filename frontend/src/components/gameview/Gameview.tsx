@@ -2,6 +2,8 @@ import './gameview.css'
 import {FC} from 'react'
 import { ReadGame } from '../../utils/interface/Games'
 import Card from '../card/Card'
+import { IoClose } from "react-icons/io5";
+
 
 
 
@@ -21,7 +23,8 @@ const Gameview:FC<Props> = ({games, closeGameView}) => {
 					<Card key={ game._id } game={ game } closeGameView={closeGameView} />
 				)) }
             </div>
-                <button onClick={() =>closeGameView()} id="close-btn" className="nes-btn">Close</button>
+                <IoClose onClick={() =>closeGameView()} id="close-btn"/>
+                
         </div> 
     )
 }

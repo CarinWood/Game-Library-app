@@ -1,5 +1,5 @@
 import http from '../MyApi'
-import { CreateGame, ReadGame } from '../interface/Games'
+import { CreateGame, SearchGame } from '../interface/Games'
 
 
 const GameService = {
@@ -13,7 +13,11 @@ const GameService = {
 
 	deleteGame: (id: string) => {
 		return http.delete(`/game/delete/${id}`)
-	}
+	},
+
+	searchGame: (_game: SearchGame) => {
+		return http.get('/game/search', _game)
+	},
 
 }
 

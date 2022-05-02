@@ -13,3 +13,9 @@ export interface ReadGame {
     release_yr: number
     genre: string
 }
+
+export interface SearchGame {
+    title: string,
+    system: string,
+    genre: string
+}

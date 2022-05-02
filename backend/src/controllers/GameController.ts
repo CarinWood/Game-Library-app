@@ -29,6 +29,29 @@ const createGame = async (req: Request, res: Response) => {
     }
 }
 
+const showSearchResult = async (req: Request, res: Response) => {
+        try {
+            GameModel.find({title:req.body.title, system:req.body.system, genre:req.body.genre}, '', (error: ErrorCallback, games: Array<ReadGame>) => {
+                if (error) {
+                    Logger.error(error)
+                    res.status(400).send({
+                        error: 'Error getting Games'
+                    })
+                } else {
+                    Logger.http(games)
+                    res.status(200).send(games)
+                }
+            })
+        }
+        catch(error) {
+            Logger.error(error)
+            res.status(400).send({
+                error: 'Error getting games'
+        })
+}
+}
+
+
 
 const showAllGames = async (req: Request, res: Response) => {
         try {
@@ -49,6 +72,8 @@ const showAllGames = async (req: Request, res: Response) => {
 		})
         }
 }
+
+
 
 
 
@@ -81,6 +106,7 @@ const deleteGame = async (req: Request, res: Response) => {
 export default {
     createGame,
     deleteGame,
-    showAllGames
+    showAllGames,
+    showSearchResult
 }
 

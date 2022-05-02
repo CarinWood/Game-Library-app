@@ -157,7 +157,7 @@
 .checkmark {
     font-size: 35px;
     position: absolute;
-    right: 91%;
+    right: 90.2%;
     top: 39%;    
 }
 
@@ -165,26 +165,62 @@
     font-size: 35px;
     position: absolute; 
     top: 39%;
-    left: 22.2%;
+    left: 23.2%;
 }
 
 .segamark {
     font-size: 35px;
     position: absolute;
     top: 39%; 
-    right: 48.5%;
+    right: 48%;
 }
 
 .gbmark {
     font-size: 35px;
     position: absolute;
     top: 39%; 
-    right: 26%;
+    right: 25.5%;
 }
 
 .action-check {
     font-size: 35px;
     position: absolute;
-    top: 39%
+    top: 13%;
+    left: 3.2%;
+}
+
+.platform-check {
+    font-size: 35px;
+    position: absolute;
+    top: 13%;
+    left: 34%;
+}
+
+.rpg-check {
+    font-size: 35px;
+    position: absolute;
+    top: 13%;
+    left: 65%;
+}
+
+.shooter-check {
+    font-size: 35px;
+    position: absolute;
+    top: 63%;
+    left: 65%;
+}
+
+.brawler-check {
+    font-size: 35px;
+    position: absolute;
+    top: 63%;
+    left: 34%;
+}
+
+.puzzle-check {
+    font-size: 35px;
+    position: absolute;
+    top: 63%;
+    left: 3.2%;
 }
 

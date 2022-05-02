@@ -4,7 +4,7 @@ import { RiArrowDropRightFill, RiArrowDropDownFill } from "react-icons/ri"
 import { BsCheck } from "react-icons/bs";
 import Gameview from '../gameview/Gameview';
 import GameService from '../../utils/service/GameService';
-import { ReadGame } from '../../utils/interface/Games';
+import { ReadGame, SearchGame } from '../../utils/interface/Games';
 
 const Search:FC = () => {
 
@@ -15,6 +15,8 @@ const [segaIsChecked, setSegaIsChecked] = useState(false)
 const [gbIsChecked, setGbIsChecked] = useState(false)
 const [showGameview, setShowGameview] = useState(false)
 const [genre, setGenre] = useState('')
+const [title, setTitle] = useState('')
+const [system, setSystem] = useState('')
 const [games, setGames] = useState<Array<ReadGame>>([])
 
 
@@ -50,32 +52,68 @@ const clickGB =() => {
   setSnesIsChecked(false)
 }
 
-const clickGenre = (genre: string) => {
-    if (genre === 'action') {
-      setGenre('action')
-    } else if (genre === 'platformer') {
-      alert('platformer')
-    } else if (genre === 'rpg') {
-      alert('rpg')
-    } else if (genre === 'puzzle') {
-      alert('puzzle')
-    } else if (genre === 'brawler') {
-      alert('brawler')
+const clickSystem = (_system: string) => {
+    if (_system === 'NES') {
+      setSystem('NES')
+     
+    } else if (_system === 'SNES') {
+      setSystem('SNES')
+   
+    } else if (_system === 'Sega') {
+      setSystem('Sega') 
+   
     } else {
-      alert('shooter')
+      setSystem('Gameboy')
+  
+    }
+}
+
+const clickGenre = (_genre: string) => {
+    if (_genre === 'action') {
+      setGenre('action')
+    } else if (_genre === 'platformer') {
+      setGenre('platformer')
+    } else if (_genre === 'RPG') {
+      setGenre('RPG')
+    } else if (_genre === 'puzzle') {
+      setGenre('puzzle')
+    } else if (_genre === 'brawler') {
+      setGenre('brawler')
+    } else {
+      setGenre('shooter')
     }
 
 }
 
 
 const searchGames = () => {
-  setShowGameview(true)
+  // setShowGameview(true)
+  // console.log(genre, system, title)
 
-  GameService.getAll()
-  .then(response => {
-    setGames(response.data)
-  })
-  .catch(error => {console.log(error)})
+  // if(genre === '' && system === '' && title === '') {
+  //   GameService.getAll()
+  //   .then(response => {
+  //     setGames(response.data)
+  //   })
+  //   .catch(error => {console.log(error)})
+  // } else {
+
+    const _game: SearchGame = {
+      "title": title,
+      "system": system,
+      "genre": genre
+    }
+    console.log(_game)
+
+     GameService.searchGame(_game)
+     .then(response => {
+       console.log(response.data)
+     })
+     .catch(error => {
+       console.log(error)
+     })
+ // }
+
 }
 
 const closeGameView = () => {
@@ -91,6 +129,8 @@ const closeGameView = () => {
          type="text" 
          className="search-input"
          placeholder='Game title ...'
+         value={title}
+         onChange={e => setTitle(e.target.value)}
          />
          <button onClick={()=> searchGames()} className="search-btn">Search</button>
         </div>
@@ -110,20 +150,20 @@ const closeGameView = () => {
           <section>
           <div className="system-choices">
             <p className='system'>System:</p>
-            <form  onClick={()=>clickNes()}  className='checkbox-form'>
-                <div className='square'>{nesIsChecked && <BsCheck className='checkmark'/>}</div>
+            <form  onClick={()=>clickSystem('NES')}  className='checkbox-form'>
+                <div className='square'>{system === 'NES' && <BsCheck className='checkmark'/>}</div>
                 <p className='label'>NES</p>
             </form>
-            <form onClick={() =>clickSnes()}className='checkbox-form'>
-                <div className='square'>{snesIsChecked && <BsCheck className='snesmark'/>}</div>
+            <form onClick={() =>clickSystem('SNES')}className='checkbox-form'>
+                <div className='square'>{system === 'SNES' && <BsCheck className='snesmark'/>}</div>
                 <p className='label'>SNES</p>
             </form>
-            <form onClick={() => clickSega()} className='checkbox-form'>
-                <div className='square'>{segaIsChecked && <BsCheck className='segamark'/>}</div>
+            <form onClick={() => clickSystem('Sega')} className='checkbox-form'>
+                <div className='square'>{system === 'Sega' && <BsCheck className='segamark'/>}</div>
                 <p className='label'>SEGA</p>
             </form>
-            <form onClick={() =>clickGB()} className='checkbox-form'>
-                <div className='square'>{gbIsChecked && <BsCheck className="gbmark"/>}</div>
+            <form onClick={() =>clickSystem('Gameboy')} className='checkbox-form'>
+                <div className='square'>{system === 'Gameboy' && <BsCheck className="gbmark"/>}</div>
                 <p className='label'>GAMEBOY</p>
             </form>
             </div>
@@ -135,23 +175,23 @@ const closeGameView = () => {
                 <p className='label'>Action</p>
             </form>
             <form onClick={() =>clickGenre('platformer')}className='genre-form'>
-                <div className='box'>{snesIsChecked && <BsCheck className='snesmark'/>}</div>
+                <div className='box'>{genre === 'platformer' && <BsCheck className='platform-check'/>}</div>
                 <p className='label'>Platform</p>
             </form>
-            <form onClick={() => clickGenre('rpg')} className='genre-form'>
-                <div className='box'>{segaIsChecked && <BsCheck className='segamark'/>}</div>
+            <form onClick={() => clickGenre('RPG')} className='genre-form'>
+                <div className='box'>{genre === 'RPG' && <BsCheck className='rpg-check'/>}</div>
                 <p className='label'>RPG</p>
             </form>
             <form onClick={() =>clickGenre('puzzle')} className='genre-form'>
-                <div className='box'>{gbIsChecked && <BsCheck className="gbmark"/>}</div>
+                <div className='box'>{genre === 'puzzle' && <BsCheck className="puzzle-check"/>}</div>
                 <p className='label'>Puzzle</p>
             </form>
             <form onClick={() =>clickGenre('brawler')} className='genre-form'>
-                <div className='box'>{gbIsChecked && <BsCheck className="gbmark"/>}</div>
+                <div className='box'>{genre === 'brawler' && <BsCheck className="brawler-check"/>}</div>
                 <p className='label'>Brawler</p>
             </form>
             <form onClick={() =>clickGenre('shooter')} className='genre-form'>
-                <div className='box'>{gbIsChecked && <BsCheck className="gbmark"/>}</div>
+                <div className='box'>{genre === 'shooter' && <BsCheck className="shooter-check"/>}</div>
                 <p className='label'>Shooter</p>
             </form>
          

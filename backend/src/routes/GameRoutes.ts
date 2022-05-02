@@ -8,6 +8,8 @@ const GameRoutes = (server: Express) => {
         //Read
         server.get('/game', GameController.showAllGames)
 
+        server.get('/game/search', GameController.showSearchResult)
+
         //Delete
         server.delete('/game/delete/:id', GameController.deleteGame)
 }
