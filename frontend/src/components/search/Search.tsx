@@ -71,8 +71,8 @@ const clickSystem = (_system: string) => {
 const clickGenre = (_genre: string) => {
     if (_genre === 'action') {
       setGenre('action')
-    } else if (_genre === 'platformer') {
-      setGenre('platformer')
+    } else if (_genre === 'platform') {
+      setGenre('platform')
     } else if (_genre === 'RPG') {
       setGenre('RPG')
     } else if (_genre === 'puzzle') {
@@ -102,11 +102,11 @@ const searchGames = () => {
       "title": title,
       "system": system,
       "genre": genre
-    }
+    
     console.log(_game)
 
-     GameService.searchGame(_game)
-     .then(response => {
+     GameService.
+      .then(response => {
        console.log(response.data)
      })
      .catch(error => {
@@ -174,8 +174,8 @@ const closeGameView = () => {
                 <div className='box'>{genre === 'action' && <BsCheck className='action-check'/>}</div>
                 <p className='label'>Action</p>
             </form>
-            <form onClick={() =>clickGenre('platformer')}className='genre-form'>
-                <div className='box'>{genre === 'platformer' && <BsCheck className='platform-check'/>}</div>
+            <form onClick={() =>clickGenre('platform')}className='genre-form'>
+                <div className='box'>{genre === 'platform' && <BsCheck className='platform-check'/>}</div>
                 <p className='label'>Platform</p>
             </form>
             <form onClick={() => clickGenre('RPG')} className='genre-form'>

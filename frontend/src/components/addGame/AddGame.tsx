@@ -114,7 +114,7 @@ const AddGame:FC<Props> = ({clickAddGame}) => {
                 <p className='new-game-genre'>Genre:</p>
                 <select className='genre-select' onChange={e => selectGenre(e.target.value)}>
                     <option value={'Action'}>Action</option>
-                    <option value={'Platform'}>Platformer</option>
+                    <option value={'Platform'}>Platform</option>
                     <option value={'RPG'}>RPG</option>
                     <option value={'Puzzle'}>Puzzle</option>
                     <option value={'Racing'}>Racing</option>
