@@ -1,0 +1,170 @@
+.add-game-container {
+    margin-top: 30px;
+    width: 40vw;
+    height: 60vh;
+    background-color: #c0c0c0;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 25px;   
+    padding-left: 30px;
+    padding-right: 30px;
+  
+}
+
+.add-game-headline {
+    padding-top: 0px;
+    margin-top: 0px;
+    font-size: 25px;
+    letter-spacing: 0.8px;  
+    
+}
+
+.title-article {
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding-left: 30px;
+}
+
+.new-game-title, .new-game-system, .new-game-genre, .new-game-release {
+    font-size: 25px;
+    letter-spacing: 1.5px;
+    padding-top: 20px;
+    margin-right: 15px;       
+}
+
+.new-game-system, .new-game-genre {
+    margin-right: 0px;
+}
+
+.system-select {
+    margin-left: 0px;
+    margin-right: 10px;
+    width: 100px;
+}
+
+
+
+.title-input {
+    width: 380px;
+    font-size: 22px;
+    padding: 0px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    padding-left: 10px;   
+}
+
+.input-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.year-article {
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding-left: 30px;
+    position: relative;
+}
+
+.year-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 4px;
+    font-size: 19px;
+    padding-left: 8px;
+    width: 100px;
+    height: 26px;
+    background-color: #e9e9ed;
+    border-radius: 4px;
+    margin-left: 24px;
+    border: 1px solid #8f8f9d;
+    cursor: pointer;
+    outline: none;
+}
+
+.arrow-up {
+    position: absolute;
+    top: 33%;
+    right: 61%;
+    cursor: pointer;
+}
+
+.arrow-down {
+    position: absolute;
+    bottom: 32%;
+    right: 61%;
+    cursor: pointer;
+}
+
+.system-article {
+    width: 100%;
+    padding-left: 30px;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.new-game-system {
+    padding: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-top: 18px;
+    margin-right: 10px;
+}
+
+.genre-article {
+    width: 100%;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 60px;
+}
+
+.new-game-genre {
+    padding-top: 18px;
+    padding-right: 0px;
+    width: auto; 
+    margin-right: 10px;   
+}
+
+.genre-select {
+    margin-left: 16px;
+    width:100px;
+}
+
+.button-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+#cancel-btn {
+    padding:0;
+    font-size: 20px;
+    width: 80px;
+    height: 34px;
+    letter-spacing: 1px;
+    margin-right: 20px;
+}
+
+
+#add-btn {
+    padding:0;
+    font-size: 20px;
+    width: 110px;
+    height: 34px;
+    letter-spacing: 1px;
+}

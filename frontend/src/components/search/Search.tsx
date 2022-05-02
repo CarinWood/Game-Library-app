@@ -78,6 +78,10 @@ const searchGames = () => {
   .catch(error => {console.log(error)})
 }
 
+const closeGameView = () => {
+  setShowGameview(false)
+}
+
   return (
     <div className='search-container'>
         <div className='search-div'>
@@ -156,7 +160,7 @@ const searchGames = () => {
           </section>
         }
 </div>
-      {showGameview && <Gameview games={games}/>}
+      {showGameview && <Gameview games={games} closeGameView={closeGameView}/>}
 
     </div>
   )

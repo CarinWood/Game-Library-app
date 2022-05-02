@@ -1,3 +1,8 @@
+.card-div {
+    position: relative;
+}
+
+
 .game-title {
     font-size: 25px;
     letter-spacing: 0.5px;
@@ -16,6 +21,14 @@
     line-height: 22px;
 }
 
+.trash {
+    position: absolute;
+    bottom: 30%;
+    right: 0;
+    cursor: pointer;
+
+}
+
 .divider {
   
     letter-spacing: 2px;
@@ -23,5 +36,18 @@
 }
 
 
+.del-game-btn {
+    font-size: 18px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    letter-spacing: 0.3px;
+    right: 0;
+    top: 45%;
+  
 
+
+}
 

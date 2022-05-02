@@ -4,10 +4,13 @@ import './aside.css'
 interface Props {
     openSearch: () => void
     openCredits: () => void
+    clickAddGame: () => void
 }
 
-const Aside:FC<Props> = ({openSearch, openCredits}) => {
+const Aside:FC<Props> = ({openSearch, openCredits, clickAddGame}) => {
+  
 
+   
 
 
     return (
@@ -19,6 +22,7 @@ const Aside:FC<Props> = ({openSearch, openCredits}) => {
                 </button>
 
                 <button 
+                    onClick={() => clickAddGame()}
                     className='nes-btn add-game-btn'>
                     Add New Game
                 </button>

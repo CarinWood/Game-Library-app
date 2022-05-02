@@ -7,6 +7,7 @@
     background-color: white;
     /* background: linear-gradient(#E9F8FF, #C1E3FF);  */
     box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.7);
+    
 }
 
 .result-headline {
@@ -26,4 +27,17 @@
     justify-content: center;
     padding-left: 30px;
 }
+
+#close-btn {
+    padding:0;
+    font-size: 20px;
+    width: 80px;
+    height: 34px;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: 3.2%;
+    right: 3.6%;
+}
+
+
 
