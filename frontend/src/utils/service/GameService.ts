@@ -18,6 +18,9 @@ const GameService = {
 	searchGame: (_game: SearchGame) => {
 		return http.get('/game/search', _game)
 	},
+	searchTitle: (title: object) => {
+		return http.get('/game/title', title)
+	},
 
 }
 

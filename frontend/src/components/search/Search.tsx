@@ -4,7 +4,7 @@ import { RiArrowDropRightFill, RiArrowDropDownFill } from "react-icons/ri"
 import { BsCheck } from "react-icons/bs";
 import Gameview from '../gameview/Gameview';
 import GameService from '../../utils/service/GameService';
-import { ReadGame, SearchGame } from '../../utils/interface/Games';
+import { CreateGame, ReadGame, SearchGame } from '../../utils/interface/Games';
 
 const Search:FC = () => {
 
@@ -98,20 +98,17 @@ const searchGames = () => {
   //   .catch(error => {console.log(error)})
   // } else {
 
-    const _game: SearchGame = {
+    const _title: CreateGame = {
       "title": title,
-      "system": system,
-      "genre": genre
-    
-    console.log(_game)
+    }
 
-     GameService.
-      .then(response => {
-       console.log(response.data)
-     })
-     .catch(error => {
-       console.log(error)
-     })
+    GameService.searchTitle(_title)
+    .then(response => {
+      console.log(response.data)
+    })
+    .catch(error => console.log(error))
+    
+    
  // }
 
 }

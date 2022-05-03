@@ -9,6 +9,8 @@ const GameRoutes = (server: Express) => {
         server.get('/game', GameController.showAllGames)
 
         server.get('/game/search', GameController.showSearchResult)
+        
+        server.get('/game/title', GameController.searchTitle)
 
         //Delete
         server.delete('/game/delete/:id', GameController.deleteGame)
