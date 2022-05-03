@@ -15,8 +15,11 @@ const GameService = {
 		return http.delete(`/game/delete/${id}`)
 	},
 
-	searchGame: (_game: SearchGame) => {
-		return http.get('/game/search', _game)
+	searchGame:  async (_game: object) => {
+		console.log("game", _game)
+		const data = await http.get('/game/search', _game)
+		console.log("data", data)
+		return data 
 	},
 	searchTitle: (title: object) => {
 		return http.get('/game/title', title)

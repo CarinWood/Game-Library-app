@@ -30,6 +30,7 @@ const createGame = async (req: Request, res: Response) => {
 }
 
 const showSearchResult = async (req: Request, res: Response) => {
+    console.log(req.body)
         try {
             GameModel.find({title:req.body.title, system:req.body.system, genre:req.body.genre}, '', (error: ErrorCallback, games: Array<ReadGame>) => {
                 if (error) {

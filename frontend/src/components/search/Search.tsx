@@ -93,6 +93,9 @@ const searchGames = () => {
     "genre": genre
   }
 
+
+  console.log(_game)
+
  GameService.searchGame(_game)
  .then(response => {
    console.log(response.data)
