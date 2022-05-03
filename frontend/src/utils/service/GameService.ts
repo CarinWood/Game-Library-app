@@ -17,7 +17,7 @@ const GameService = {
 
 	searchGame:  async (_game: object) => {
 		console.log("game", _game)
-		const data = await http.get('/game/search', _game)
+		const data = await http.post('/game/search', _game)
 		console.log("data", data)
 		return data 
 	},

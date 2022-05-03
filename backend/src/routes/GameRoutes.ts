@@ -8,7 +8,7 @@ const GameRoutes = (server: Express) => {
         //Read
         server.get('/game', GameController.showAllGames)
 
-        server.get('/game/search', GameController.showSearchResult)
+        server.post('/game/search', GameController.showSearchResult)
         
         server.get('/game/title', GameController.searchTitle)
 

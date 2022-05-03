@@ -71,8 +71,8 @@ const clickSystem = (_system: string) => {
 const clickGenre = (_genre: string) => {
     if (_genre === 'action') {
       setGenre('action')
-    } else if (_genre === 'platform') {
-      setGenre('platform')
+    } else if (_genre === 'Platform') {
+      setGenre('Platform')
     } else if (_genre === 'RPG') {
       setGenre('RPG')
     } else if (_genre === 'puzzle') {
@@ -87,7 +87,7 @@ const clickGenre = (_genre: string) => {
 
 
 const searchGames = () => {
-  const _game = {
+  const _game: object = {
     "title": title,
     "system": system,
     "genre": genre
@@ -162,8 +162,8 @@ const closeGameView = () => {
                 <div className='box'>{genre === 'action' && <BsCheck className='action-check'/>}</div>
                 <p className='label'>Action</p>
             </form>
-            <form onClick={() =>clickGenre('platform')}className='genre-form'>
-                <div className='box'>{genre === 'platform' && <BsCheck className='platform-check'/>}</div>
+            <form onClick={() =>clickGenre('Platform')}className='genre-form'>
+                <div className='box'>{genre === 'Platform' && <BsCheck className='platform-check'/>}</div>
                 <p className='label'>Platform</p>
             </form>
             <form onClick={() => clickGenre('RPG')} className='genre-form'>
