@@ -87,29 +87,17 @@ const clickGenre = (_genre: string) => {
 
 
 const searchGames = () => {
-  // setShowGameview(true)
-  // console.log(genre, system, title)
+  const _game = {
+    "title": title,
+    "system": system,
+    "genre": genre
+  }
 
-  // if(genre === '' && system === '' && title === '') {
-  //   GameService.getAll()
-  //   .then(response => {
-  //     setGames(response.data)
-  //   })
-  //   .catch(error => {console.log(error)})
-  // } else {
-
-    const _title: CreateGame = {
-      "title": title,
-    }
-
-    GameService.searchTitle(_title)
-    .then(response => {
-      console.log(response.data)
-    })
-    .catch(error => console.log(error))
-    
-    
- // }
+ GameService.searchGame(_game)
+ .then(response => {
+   console.log(response.data)
+ })
+ .catch(error => console.log(error))
 
 }
 
