@@ -14,7 +14,7 @@ interface Props {
 
 const AddGame:FC<Props> = ({clickAddGame}) => {
 
-        const [year, setYear] =useState(1987)
+        const [year, setYear] =useState(1999)
         const [title, setTitle] =useState('')
         const [system, setSystem] =useState('')
         const [genre, setGenre] =useState('')
@@ -41,6 +41,7 @@ const AddGame:FC<Props> = ({clickAddGame}) => {
     }
 
     const addGame = () => {
+     
         
         const game: CreateGame = {
             'title': title,
@@ -53,10 +54,12 @@ const AddGame:FC<Props> = ({clickAddGame}) => {
        GameService.createGame(game)
        .then(response => {
            setMessage(response.data.title)
+           console.log(response.data.title)
        })
        .catch(error => console.log(error))
 
        setOpenDialog(true)
+       setTitle('')
     
     
     }
@@ -75,6 +78,7 @@ const AddGame:FC<Props> = ({clickAddGame}) => {
         <article className='title-article'>
             <p className='new-game-title'>Title:</p>
             <input
+                value={title}
                 className='title-input'
                 onChange={(e) => titlefunc(e.target.value)}
                
@@ -103,6 +107,7 @@ const AddGame:FC<Props> = ({clickAddGame}) => {
             <article className='system-article'>
                 <p className='new-game-system'>System:</p>
                 <select className='system-select' onChange={e => systemSelect(e.target.value)}>
+                    <option value="0"></option>
                     <option value={'NES'}>NES</option>
                     <option value={'SNES'}>SNES</option>
                     <option value={'Sega'}>Sega</option>
@@ -113,6 +118,7 @@ const AddGame:FC<Props> = ({clickAddGame}) => {
             <article className='genre-article'>
                 <p className='new-game-genre'>Genre:</p>
                 <select className='genre-select' onChange={e => selectGenre(e.target.value)}>
+                    <option value={0}></option>
                     <option value={'Action'}>Action</option>
                     <option value={'Platform'}>Platform</option>
                     <option value={'RPG'}>RPG</option>

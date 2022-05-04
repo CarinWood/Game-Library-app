@@ -94,6 +94,26 @@ const searchTitle = async (req: Request, res: Response) => {
         }
 }
 
+const searchSystem = async (req: Request, res: Response) => {
+        try {
+            GameModel.find({system: req.body.system}, '', (error: ErrorCallback, games: Array<ReadGame>) => {
+                if (error) {
+                    Logger.error(error)
+                    res.status(400).send('Error getting Games')
+                } else {
+                    Logger.http(games)
+                    res.status(200).send(games)
+                }
+            })
+        }
+        catch(error) {
+            Logger.error(error)
+		res.status(400).send({
+			error: 'Error getting user'
+		})
+        }
+}
+
 
 
 
@@ -129,6 +149,7 @@ export default {
     deleteGame,
     showAllGames,
     showSearchResult,
-    searchTitle
+    searchTitle,
+    searchSystem
 }
 

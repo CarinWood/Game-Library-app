@@ -5,6 +5,7 @@ import { BsCheck } from "react-icons/bs";
 import Gameview from '../gameview/Gameview';
 import GameService from '../../utils/service/GameService';
 import { CreateGame, ReadGame, SearchGame } from '../../utils/interface/Games';
+import { setEnvironmentData } from 'worker_threads';
 
 const Search:FC = () => {
 
@@ -70,37 +71,66 @@ const clickSystem = (_system: string) => {
 
 const clickGenre = (_genre: string) => {
     if (_genre === 'action') {
-      setGenre('action')
+      setGenre('Action')
     } else if (_genre === 'Platform') {
       setGenre('Platform')
     } else if (_genre === 'RPG') {
       setGenre('RPG')
     } else if (_genre === 'puzzle') {
-      setGenre('puzzle')
-    } else if (_genre === 'brawler') {
-      setGenre('brawler')
+      setGenre('Puzzle')
+    } else if (_genre === 'racing') {
+      setGenre('Racing')
     } else {
-      setGenre('shooter')
+      setGenre('Shooter')
     }
 
 }
 
 
 const searchGames = () => {
-  const _game: object = {
-    "title": title,
-    "system": system,
-    "genre": genre
+  
+  if (title === ''&& system === '' && genre === '') {
+      GameService.getAll()
+      .then(response => {
+        setGames(response.data)
+        setShowGameview(true)
+      })
+      .catch(error => console.log(error))
+
+  } else if (system === '' && genre === '') {
+      const _title = {
+        "title": title
+      }
+
+    GameService.searchTitle(_title)
+    .then(response =>{
+      setGames(response.data)
+      setShowGameview(true)
+    })
+    .catch(error => console.log(error))
+
+  } else {
+       const _game: object = {
+     "title": title,
+     "system": system,
+     "genre": genre
+   }
+
+
+   console.log(_game)
+
+  GameService.searchGame(_game)
+  .then(response => {
+   
+    setGames(response.data)
+    setShowGameview(true)
+    setGenre('')
+    setSystem('')
+    setTitle('')
+  })
+  .catch(error => {
+    console.log(error)})
   }
-
-
-  console.log(_game)
-
- GameService.searchGame(_game)
- .then(response => {
-   console.log(response.data)
- })
- .catch(error => console.log(error))
 
 }
 
@@ -159,7 +189,7 @@ const closeGameView = () => {
           <div className="genre-choices">
             <p className='genre'>Genre:</p>
             <form  onClick={()=>clickGenre('action')}  className='genre-form'>
-                <div className='box'>{genre === 'action' && <BsCheck className='action-check'/>}</div>
+                <div className='box'>{genre === 'Action' && <BsCheck className='action-check'/>}</div>
                 <p className='label'>Action</p>
             </form>
             <form onClick={() =>clickGenre('Platform')}className='genre-form'>
@@ -171,15 +201,15 @@ const closeGameView = () => {
                 <p className='label'>RPG</p>
             </form>
             <form onClick={() =>clickGenre('puzzle')} className='genre-form'>
-                <div className='box'>{genre === 'puzzle' && <BsCheck className="puzzle-check"/>}</div>
+                <div className='box'>{genre === 'Puzzle' && <BsCheck className="puzzle-check"/>}</div>
                 <p className='label'>Puzzle</p>
             </form>
-            <form onClick={() =>clickGenre('brawler')} className='genre-form'>
-                <div className='box'>{genre === 'brawler' && <BsCheck className="brawler-check"/>}</div>
-                <p className='label'>Brawler</p>
+            <form onClick={() =>clickGenre('racing')} className='genre-form'>
+                <div className='box'>{genre === 'Racing' && <BsCheck className="brawler-check"/>}</div>
+                <p className='label'>Racing</p>
             </form>
             <form onClick={() =>clickGenre('shooter')} className='genre-form'>
-                <div className='box'>{genre === 'shooter' && <BsCheck className="shooter-check"/>}</div>
+                <div className='box'>{genre === 'Shooter' && <BsCheck className="shooter-check"/>}</div>
                 <p className='label'>Shooter</p>
             </form>
          

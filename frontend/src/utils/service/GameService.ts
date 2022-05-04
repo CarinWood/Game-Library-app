@@ -22,7 +22,7 @@ const GameService = {
 		return data 
 	},
 	searchTitle: (title: object) => {
-		return http.get('/game/title', title)
+		return http.post('/game/title', title)
 	},
 
 }
