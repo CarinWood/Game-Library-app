@@ -3,7 +3,7 @@ import {FC} from 'react'
 import { ReadGame } from '../../utils/interface/Games'
 import Card from '../card/Card'
 import { IoClose } from "react-icons/io5";
-import DeletePopup from '../deletePopup/DeletePopup';
+
 
 
 
@@ -17,7 +17,7 @@ const Gameview:FC<Props> = ({games, closeGameView}) => {
 
        return (
         <div className='game-list'>
-            <DeletePopup/>
+         
             <h2 className='result-headline'>Search Result:</h2>
           
             <div className='game-card'>

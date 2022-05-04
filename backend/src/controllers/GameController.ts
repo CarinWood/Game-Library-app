@@ -163,6 +163,33 @@ const deleteGame = async (req: Request, res: Response) => {
         }
 }
 
+const editGame = async (req: Request, res: Response) => {
+        try {
+            const updatedGame = {
+                title: req.body.title,
+                system: req.body.system,
+                genre: req.body.genre
+            }
+            GameModel.findByIdAndUpdate(req.params.id, updatedGame, {new: true}, (error, game) => {
+                if (error) {
+                    Logger.error(error)
+                    res.status(404).send({
+                        error: 'Error updating user with id ' + req.params.id
+                    })
+                } else {
+                    Logger.info(game)
+                    res.status(200).send(game ? game : {
+                        message: `Game with id '${ req.params.id }' not found`
+                    })
+                }
+            })
+        }
+
+        catch {
+
+        }
+}
+
 
 export default {
     createGame,
@@ -171,6 +198,7 @@ export default {
     showSearchResult,
     searchTitle,
     searchSystem,
-    searchGenre
+    searchGenre,
+    editGame
 }
 

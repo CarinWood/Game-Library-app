@@ -12,6 +12,9 @@ const GameRoutes = (server: Express) => {
         server.post('/game/system', GameController.searchSystem)
         server.post('/game/genre', GameController.searchGenre)
 
+        //Update
+        server.put('/game/:id', GameController.editGame)
+
         //Delete
         server.delete('/game/delete/:id', GameController.deleteGame)
 }
