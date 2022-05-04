@@ -45,10 +45,27 @@
     align-items: center;
     position: absolute;
     letter-spacing: 0.3px;
-    right: 0;
-    top: 45%;
-  
+    right: 5%;
+    top: 47%;
+}
 
+.del-game-btn:active {
+    transform: translateY(2px);
+}
 
+.edit-btn {
+    font-size: 18px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    letter-spacing: 0.3px;
+    right: 25%;
+    top: 47%;
+}
+
+.edit-btn:active {
+    transform: translateY(2px);
 }
 

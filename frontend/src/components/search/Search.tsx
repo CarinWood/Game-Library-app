@@ -6,6 +6,7 @@ import Gameview from '../gameview/Gameview';
 import GameService from '../../utils/service/GameService';
 import { CreateGame, ReadGame, SearchGame } from '../../utils/interface/Games';
 import { setEnvironmentData } from 'worker_threads';
+import { MdRadioButtonUnchecked } from 'react-icons/md';
 
 const Search:FC = () => {
 
@@ -23,6 +24,12 @@ const [games, setGames] = useState<Array<ReadGame>>([])
 
 const openAdvancedMenu = (): void => {
     setOpenMenu(!openMenu)
+}
+
+const titleFunc = (_title: string) => {
+  const trimmedTitle = _title.trim()
+
+  setTitle(trimmedTitle)
 }
 
 const clickNes = () => {
@@ -55,33 +62,82 @@ const clickGB =() => {
 
 const clickSystem = (_system: string) => {
     if (_system === 'NES') {
-      setSystem('NES')
-     
+      if (system === 'NES') {
+        setSystem('')
+      } else {
+        setSystem('NES')
+      }
+ 
     } else if (_system === 'SNES') {
-      setSystem('SNES')
+        if (system === 'SNES') {
+          setSystem('')
+        } else {
+           setSystem('SNES')
+        }
+      
    
     } else if (_system === 'Sega') {
-      setSystem('Sega') 
+       if (system === 'Sega') {
+         setSystem('')
+       } else {
+         setSystem('Sega')
+       }
+       
    
     } else {
-      setSystem('Gameboy')
+      if (system === 'Gameboy') {
+        setSystem('')
+      } else {
+        setSystem('Gameboy')
+      }
+      
   
     }
 }
 
 const clickGenre = (_genre: string) => {
     if (_genre === 'action') {
-      setGenre('Action')
+      if (genre === 'Action') {
+        setGenre('')
+      } else {
+        setGenre('Action')
+      }
+     
     } else if (_genre === 'Platform') {
-      setGenre('Platform')
+      if (genre === 'Platform') {
+        setGenre('')
+      } else {
+        setGenre('Platform')
+      }
+   
     } else if (_genre === 'RPG') {
-      setGenre('RPG')
+      if (genre === 'RPG') {
+        setGenre('')
+      } else {
+        setGenre('RPG')
+      }
+     
     } else if (_genre === 'puzzle') {
-      setGenre('Puzzle')
+      if(genre === 'Puzzle') {
+        setGenre('')
+      } else {
+        setGenre('Puzzle')
+      }
+      
     } else if (_genre === 'racing') {
-      setGenre('Racing')
+      if(genre === 'Racing') {
+          setGenre('')
+      } else {
+         setGenre('Racing')
+      }
+     
     } else {
-      setGenre('Shooter')
+      if(genre === 'Shooter') {
+        setGenre('')
+      } else {
+        setGenre('Shooter')
+      }
+
     }
 
 }
@@ -108,6 +164,29 @@ const searchGames = () => {
       setShowGameview(true)
     })
     .catch(error => console.log(error))
+
+  } else if (title === '' && genre === '') {
+     const _system = {
+      "system": system
+    }
+    GameService.searchSystem(_system)
+    .then(response => {
+      setGames(response.data)
+      setShowGameview(true)
+    })
+    .catch(error => console.log(error))
+
+  } else if (title === '' && system === '') {
+      const _genre = {
+        "genre": genre
+      }
+
+      GameService.searchGenre(_genre)
+      .then(response => {
+        setGames(response.data)
+        setShowGameview(true)
+      })
+      .catch(error =>console.log(error))
 
   } else {
        const _game: object = {
@@ -138,6 +217,8 @@ const closeGameView = () => {
   setShowGameview(false)
 }
 
+
+
   return (
     <div className='search-container'>
         <div className='search-div'>
@@ -148,7 +229,7 @@ const closeGameView = () => {
          className="search-input"
          placeholder='Game title ...'
          value={title}
-         onChange={e => setTitle(e.target.value)}
+         onChange={e => titleFunc(e.target.value)}
          />
          <button onClick={()=> searchGames()} className="search-btn">Search</button>
         </div>
@@ -160,11 +241,11 @@ const closeGameView = () => {
             onClick={()=>openAdvancedMenu()}
             className="advanced-btn">
               Advanced Search 
-            {openMenu ? <RiArrowDropRightFill className='arrow'/> : <RiArrowDropDownFill className='arrow'/>}
+            {openMenu === false ? <RiArrowDropRightFill className='arrow'/> : <RiArrowDropDownFill className='arrow'/>}
         </button>
 
         <div>
-          {openMenu=== false &&
+          {openMenu=== true &&
           <section>
           <div className="system-choices">
             <p className='system'>System:</p>

@@ -25,6 +25,14 @@ const GameService = {
 		return http.post('/game/title', title)
 	},
 
+	searchSystem: (system: object) => {
+		return http.post('/game/system', system)
+	},
+	
+	searchGenre: (genre: object) => {
+		return http.post('/game/genre', genre)
+	}
+
 }
 
 

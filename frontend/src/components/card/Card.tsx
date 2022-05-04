@@ -33,7 +33,8 @@ const Card:FC<Props> = ({game, closeGameView}) => {
             <p className='game-release'>Release year: {game.release_yr}</p>
             <p className='game-genre'>Genre: {game.genre}</p>
             <button onClick={() => PopupWindow()} className='del-game-btn'>Delete</button>
-            <p className='divider'>---------------------------------------</p>
+            <button className="edit-btn">Edit</button>
+            <p className='divider'>--------------------------------------------</p>
             { showPopup && <DeletePopup closeGameView={closeGameView} id={game._id} title={game.title} cancelDelete={cancelDelete}/>}
         </div>
     )
