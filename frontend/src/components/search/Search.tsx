@@ -144,6 +144,8 @@ const clickGenre = (_genre: string) => {
 
 
 const searchGames = () => {
+  console.log('this is search function')
+  console.log(title)
   
   if (title === ''&& system === '' && genre === '') {
       GameService.getAll()
@@ -152,6 +154,7 @@ const searchGames = () => {
         setShowGameview(true)
       })
       .catch(error => console.log(error))
+      console.log('this is get all function')
 
   } else if (system === '' && genre === '') {
       const _title = {
@@ -203,9 +206,7 @@ const searchGames = () => {
    
     setGames(response.data)
     setShowGameview(true)
-    setGenre('')
-    setSystem('')
-    setTitle('')
+   
   })
   .catch(error => {
     console.log(error)})
@@ -299,7 +300,7 @@ const closeGameView = () => {
           </section>
         }
 </div>
-      {showGameview && <Gameview games={games} closeGameView={closeGameView}/>}
+      {showGameview && <Gameview games={games} closeGameView={closeGameView} searchGames={searchGames}/>}
 
     </div>
   )

@@ -167,8 +167,6 @@ const editGame = async (req: Request, res: Response) => {
         try {
             const updatedGame = {
                 title: req.body.title,
-                system: req.body.system,
-                genre: req.body.genre
             }
             GameModel.findByIdAndUpdate(req.params.id, updatedGame, {new: true}, (error, game) => {
                 if (error) {

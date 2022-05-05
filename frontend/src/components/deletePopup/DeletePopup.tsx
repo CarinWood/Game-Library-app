@@ -1,7 +1,7 @@
 import {FC} from 'react'
 import './deletePopup.css'
 import GameService from '../../utils/service/GameService'
-import { UrlWithStringQuery } from 'url'
+
 
 
 interface Props {
@@ -9,12 +9,17 @@ interface Props {
     id: string
     cancelDelete: () => void
     closeGameView: () => void
+    searchGames: () => void
 }
 
 
-const DeletePopup:FC<Props> = ({title, cancelDelete, id, closeGameView}) => {
+const DeletePopup:FC<Props> = ({title, cancelDelete, id, closeGameView, searchGames}) => {
+
+  
+    
 
     const deleteGame = (_id: string) => {
+            
             GameService.deleteGame(_id)
             .then(response => {
                 console.log(response)
@@ -22,7 +27,10 @@ const DeletePopup:FC<Props> = ({title, cancelDelete, id, closeGameView}) => {
             .catch(error => console.log(error))
 
             cancelDelete()
-            closeGameView()
+           
+          
+        
+           
     }
 
 

@@ -16,6 +16,9 @@ const App:FC =() => {
   const [showMario, setShowMario] = useState(false)
   const [openAddGame, setOpenAddGame] = useState(false)
 
+ 
+
+
   const openSearch = () => {
     setShowSearch(!showSearch)
     setShowCredits(false)

@@ -31,6 +31,10 @@ const GameService = {
 	
 	searchGenre: (genre: object) => {
 		return http.post('/game/genre', genre)
+	},
+
+	updateGame: (id: string, _updatedGame: object) => {
+		return http.put(`/game/${id}`, _updatedGame)
 	}
 
 }

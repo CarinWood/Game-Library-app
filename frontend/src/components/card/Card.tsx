@@ -6,6 +6,8 @@ import DeletePopup from '../deletePopup/DeletePopup';
 interface Props {
     game: ReadGame
     closeGameView: () => void
+    openEditWindow: (_id: string) => void
+    searchGames: () => void
     
 }
 
@@ -13,7 +15,7 @@ interface Props {
 
 
 
-const Card:FC<Props> = ({game, closeGameView}) => {
+const Card:FC<Props> = ({game, closeGameView, openEditWindow, searchGames}) => {
 
     const [showPopup, setShowPopup] = useState(false)
 
@@ -26,6 +28,8 @@ const Card:FC<Props> = ({game, closeGameView}) => {
     }
 
 
+
+
     return (
         <div className='card-div'>
             <p className='game-title'>{game.title}</p>
@@ -33,9 +37,9 @@ const Card:FC<Props> = ({game, closeGameView}) => {
             <p className='game-release'>Release year: {game.release_yr}</p>
             <p className='game-genre'>Genre: {game.genre}</p>
             <button onClick={() => PopupWindow()} className='del-game-btn'>Delete</button>
-            <button className="edit-btn">Edit</button>
+            <button onClick={() => openEditWindow(game._id)} className="edit-btn">Edit</button>
             <p className='divider'>--------------------------------------------</p>
-            { showPopup && <DeletePopup closeGameView={closeGameView} id={game._id} title={game.title} cancelDelete={cancelDelete}/>}
+            { showPopup && <DeletePopup closeGameView={closeGameView} id={game._id} title={game.title} cancelDelete={cancelDelete} searchGames={searchGames}/>}
         </div>
     )
 }
